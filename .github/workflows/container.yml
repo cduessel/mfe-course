@@ -2,7 +2,8 @@ name: deploy-container
 
 on:
   push:
-    - master
+    branches:
+      - master
   paths:
     - 'mfe-course/container/**'
 

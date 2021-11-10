@@ -15,7 +15,6 @@ export default () => {
         <div>
           <Header />
           <MarketingApp />
-          <h1>Footer!</h1>
         </div>
       </StylesProvider>
     </BrowserRouter>

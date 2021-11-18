@@ -1,23 +1,23 @@
 import React, { lazy, Suspense, useState, useEffect } from "react";
-import { Route, Switch, Router, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import {
   StylesProvider,
   createGenerateClassName,
 } from "@material-ui/core/styles";
-import { createBrowserHisory } from "history";
+import { createBrowserHistory } from "history";
 
 import Progress from "./components/Progress";
 import Header from "./components/Header";
 
 const MarketingLazy = lazy(() => import("./components/MarketingApp"));
 const AuthLazy = lazy(() => import("./components/AuthApp"));
-const DashLazy = lazy(() => import("./components/DashboardApp"));
+const DashboardLazy = lazy(() => import("./components/DashboardApp"));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",
 });
 
-const history = createBrowserHisory();
+const history = createBrowserHistory();
 
 export default () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -43,7 +43,7 @@ export default () => {
               </Route>
               <Route path="/dashboard">
                 {!isSignedIn && <Redirect to="/" />}
-                <DashLazy />
+                <DashboardLazy />
               </Route>
               <Route path="/" component={MarketingLazy} />
             </Switch>
